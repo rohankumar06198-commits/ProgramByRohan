@@ -6,48 +6,27 @@ from kivy.uix.button import Button
 from datetime import datetime
 
 class ProgramByRohan(App):
-
     def build(self):
-        self.layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
+        layout = BoxLayout(orientation='vertical')
 
-        self.layout.add_widget(Label(text="Program by Rohan"))
+        layout.add_widget(Label(text="Program by Rohan"))
 
-        self.password = TextInput(
-            hint_text="Enter Password",
-            password=True
-        )
-        self.layout.add_widget(self.password)
+        self.password = TextInput(password=True)
+        layout.add_widget(self.password)
 
         btn = Button(text="Unlock")
         btn.bind(on_press=self.unlock)
-        self.layout.add_widget(btn)
+        layout.add_widget(btn)
 
         self.result = Label(text="")
-        self.layout.add_widget(self.result)
+        layout.add_widget(self.result)
 
-        return self.layout
+        return layout
 
     def unlock(self, instance):
         if self.password.text == "rohank1234":
-
-            now = datetime.now()
-
-            self.result.text = (
-                "Welcome Rohan!\n\n"
-                f"Date: {now.strftime('%d-%m-%Y')}\n"
-                f"Time: {now.strftime('%H:%M:%S')}\n\n"
-                "Calculator Ready"
-            )
+            self.result.text = "Welcome Rohan"
         else:
-            self.result.text = "Wrong Password!"
+            self.result.text = "Wrong Password"
 
-ProgramByRohan().run()[app]
-title = ProgramByRohan
-package.name = programbyrohan
-package.domain = org.rohan
-source.dir = .
-source.include_exts = py,png,jpg,kv
-version = 1.0
-requirements = python3,kivy
-orientation = portrait
-fullscreen = 0
+ProgramByRohan().run()
