@@ -8,10 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Build APK
-        uses: sayyid5416/buildozer-action@v1.0.0
+        uses: digreatbrian/buildozer-action@v2
+        with:
+          workdir: .
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
